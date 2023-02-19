@@ -10,6 +10,7 @@ export class MainPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.addEventListener('contextmenu', event => event.preventDefault());
   }
   
 }
