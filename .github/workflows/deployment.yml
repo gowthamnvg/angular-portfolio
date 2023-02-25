@@ -1,6 +1,4 @@
- 
-
-name: Deploy to GitHub Pages.
+name: Angular Deployment
 
 on:
   push:
@@ -8,26 +6,27 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '18.12.x'
 
       - name: Install dependencies
-        run: npm install --force
+        run: npm install
 
-      - name: Build
-        run: npm run build  
+      - name: Build Angular app
+        run: ng build --prod --base-href /angular-portfolio/
 
       - name: Deploy to GitHub Pages
-        uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/my-portfolio
+          publish_dir: ./dist
           publish_branch: gh-pages
+
