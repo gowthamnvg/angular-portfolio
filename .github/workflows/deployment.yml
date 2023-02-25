@@ -18,7 +18,7 @@ jobs:
           node-version: '18.12.x'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --force
 
       - name: Build Angular app
         run: ng build --prod --base-href /angular-portfolio/
