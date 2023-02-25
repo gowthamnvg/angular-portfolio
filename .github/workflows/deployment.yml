@@ -1,4 +1,4 @@
-
+ 
 
 name: Deploy to GitHub Pages
 
@@ -23,7 +23,7 @@ jobs:
         run: npm install --force
 
       - name: Build
-        run: npm run build   --base-href "MyPortfolio"
+        run: npm run build  
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
